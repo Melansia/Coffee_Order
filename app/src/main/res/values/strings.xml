@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Coffee Order</string>
+    <string name="image_logo">Image Logo</string>
+    <string name="name">Name</string>
+    <string name="your_name">Enter your name:</string>
+    <string name="enter_your_password">Enter your password:</string>
+    <string name="welcome">Welcome!</string>
+    <string name="make_order">Make Order</string>
 </resources>
