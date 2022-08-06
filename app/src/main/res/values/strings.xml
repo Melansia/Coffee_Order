@@ -7,4 +7,29 @@
     <string name="welcome">Welcome!</string>
     <string name="make_order">Make Order</string>
     <string name="warning_fill_fields">Name and Password must not be empty!</string>
+    <string name="chose_your_drink">Chose your drink</string>
+    <string name="send_order">Send order!</string>
+    <string name="lemon">Lemon</string>
+    <string name="sugar">Sugar</string>
+    <string name="milk">Milk</string>
+    <string name="what_would_you_like_with_your_tea">What would you like with your tea?</string>
+    <string name="coffee">Coffee</string>
+    <string name="tea">Tea</string>
+    <string name="hello_user_what_would_you_like_to_drink">Hello, User! What would you like to drink?</string>
+
+    <string-array name="options_of_coffee">
+        <item>Ristretto</item>
+        <item>Espresso</item>
+        <item>Americano</item>
+        <item>Cappuccino</item>
+        <item>Latte</item>
+    </string-array>
+
+    <string-array name="options_of_tea">
+        <item>Green</item>
+        <item>Earl Gray</item>
+        <item>Forest Fruits</item>
+        <item>Chamomile</item>
+        <item>Mint</item>
+    </string-array>
 </resources>
