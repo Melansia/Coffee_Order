@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="@string/hello_user_what_would_you_like_to_drink"
+        android:text="@string/hello_user"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -37,6 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:checked="true"
+            android:onClick="onClickChangeDrink"
             android:text="@string/tea" />
 
         <RadioButton
@@ -45,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:onClick="onClickChangeDrink"
             android:text="@string/coffee" />
     </RadioGroup>
 
@@ -53,10 +56,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/what_would_you_like_with_your_tea"
+        android:text="@string/additions"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/dark_brown"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,6 +147,7 @@
         android:layout_height="0dp"
         android:layout_margin="8dp"
         android:contentDescription="@string/send_order"
+        android:onClick="onClickSendOrder"
         app:srcCompat="@drawable/button"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
         app:layout_constraintEnd_toEndOf="parent"
