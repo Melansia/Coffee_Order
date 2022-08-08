@@ -91,11 +91,10 @@ class CreateOrderActivity : AppCompatActivity() {
         if (cbLemon.isChecked && drink == getString(R.string.tea)) {
             builderAdditions.append(getString(R.string.lemon)).append(" ")
         }
-        var optionOfDrink = ""
-        if (drink == getString(R.string.tea)) {
-            optionOfDrink = spinnerTea.selectedItem.toString()
+        val optionOfDrink = if (drink == getString(R.string.tea)) {
+            spinnerTea.selectedItem.toString()
         } else {
-            optionOfDrink = spinnerCoffee.selectedItem.toString()
+            spinnerCoffee.selectedItem.toString()
         }
         val order = String.format(
             getString(R.string.order),
@@ -105,7 +104,7 @@ class CreateOrderActivity : AppCompatActivity() {
             optionOfDrink
         )
 
-        var additions: String = if (builderAdditions.isNotEmpty()) {
+        val additions: String = if (builderAdditions.isNotEmpty()) {
             getString(R.string.need_additions) + builderAdditions
         } else {
             ""
