@@ -15,8 +15,8 @@
     <string name="sugar">Sugar</string>
     <string name="milk">Milk</string>
     <string name="additions">What would you like to add in your %s?</string>
-    <string name="coffee">Coffee</string>
-    <string name="tea">Tea</string>
+    <string name="coffee">Coffee ☕</string>
+    <string name="tea">Tea 🫖</string>
     <string name="hello_user">Hello, %s! What would you like to drink?</string>
     <string name="order">Name: %s
 Password: %s
