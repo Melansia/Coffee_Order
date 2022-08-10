@@ -148,7 +148,7 @@
         android:layout_margin="8dp"
         android:contentDescription="@string/send_order"
         android:onClick="onClickSendOrder"
-        app:srcCompat="@drawable/button"
+        app:srcCompat="@drawable/order_button"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCoffee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
