@@ -4,11 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 
 class CreateOrderActivity : AppCompatActivity() {
 
@@ -25,6 +25,7 @@ class CreateOrderActivity : AppCompatActivity() {
     private lateinit var drink: String
     private lateinit var name: String
     private lateinit var password: String
+    private lateinit var ivButtonSendOrder: ImageView
 
     private lateinit var builderAdditions: StringBuilder
 
@@ -32,6 +33,9 @@ class CreateOrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_order)
+
+        ivButtonSendOrder = findViewById(R.id.ivButtonSendOrder)
+
         if (intent.hasExtra("name") && intent.hasExtra("password")) {
             name = intent.getStringExtra("name").toString()
             password = intent.getStringExtra("password").toString()
@@ -57,6 +61,42 @@ class CreateOrderActivity : AppCompatActivity() {
 
         builderAdditions = java.lang.StringBuilder()
 
+        ivButtonSendOrder.setOnClickListener {
+            builderAdditions.setLength(0)
+
+            if (cbMilk.isChecked) {
+                builderAdditions.append(getString(R.string.milk)).append(" ")
+            }
+            if (cbSugar.isChecked) {
+                builderAdditions.append(getString(R.string.sugar)).append(" ")
+            }
+            if (cbLemon.isChecked && drink == getString(R.string.tea)) {
+                builderAdditions.append(getString(R.string.lemon)).append(" ")
+            }
+            val optionOfDrink = if (drink == getString(R.string.tea)) {
+                spinnerTea.selectedItem.toString()
+            } else {
+                spinnerCoffee.selectedItem.toString()
+            }
+            val order = String.format(
+                getString(R.string.order),
+                name,
+                password,
+                drink,
+                optionOfDrink
+            )
+
+            val additions: String = if (builderAdditions.isNotEmpty()) {
+                getString(R.string.need_additions) + builderAdditions
+            } else {
+                ""
+            }
+            val fullOrder = order + additions
+            val intent = Intent(this, OrderDetailActivity::class.java)
+            intent.putExtra("order", fullOrder)
+            startActivity(intent)
+        }
+
     }
 
     fun onClickChangeDrink(view: View) {
@@ -77,41 +117,5 @@ class CreateOrderActivity : AppCompatActivity() {
         }
         val additions = String.format(getString(R.string.additions), drink)
         tvAdditions.text = additions
-    }
-
-    fun onClickSendOrder(view: View) {
-        builderAdditions.setLength(0)
-
-        if (cbMilk.isChecked) {
-            builderAdditions.append(getString(R.string.milk)).append(" ")
-        }
-        if (cbSugar.isChecked) {
-            builderAdditions.append(getString(R.string.sugar)).append(" ")
-        }
-        if (cbLemon.isChecked && drink == getString(R.string.tea)) {
-            builderAdditions.append(getString(R.string.lemon)).append(" ")
-        }
-        val optionOfDrink = if (drink == getString(R.string.tea)) {
-            spinnerTea.selectedItem.toString()
-        } else {
-            spinnerCoffee.selectedItem.toString()
-        }
-        val order = String.format(
-            getString(R.string.order),
-            name,
-            password,
-            drink,
-            optionOfDrink
-        )
-
-        val additions: String = if (builderAdditions.isNotEmpty()) {
-            getString(R.string.need_additions) + builderAdditions
-        } else {
-            ""
-        }
-        val fullOrder = order + additions
-        val intent = Intent(this, OrderDetailActivity::class.java)
-        intent.putExtra("order", fullOrder)
-        startActivity(intent)
     }
 }

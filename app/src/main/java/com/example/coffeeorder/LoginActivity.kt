@@ -3,7 +3,6 @@ package com.example.coffeeorder
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -22,20 +21,19 @@ class LoginActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         btnMakeOrder = findViewById(R.id.btnMakeOrder)
 
+        btnMakeOrder.setOnClickListener {
+            val name = etName.text.toString().trim()
+            val password = etPassword.text.toString().trim()
 
-    }
-
-    fun onClickCreateOrder(view: View) {
-        val name = etName.text.toString().trim()
-        val password = etPassword.text.toString().trim()
-
-        if (name.isNotEmpty() && password.isNotEmpty()) {
-            intent = Intent(this, CreateOrderActivity::class.java)
-            intent.putExtra("name", name)
-            intent.putExtra("password", password)
-            startActivity(intent)
-        } else {
-            Toast.makeText(this, R.string.warning_fill_fields, Toast.LENGTH_SHORT).show()
+            if (name.isNotEmpty() && password.isNotEmpty()) {
+                intent = Intent(this, CreateOrderActivity::class.java)
+                intent.putExtra("name", name)
+                intent.putExtra("password", password)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, R.string.warning_fill_fields, Toast.LENGTH_SHORT).show()
+            }
         }
     }
+
 }
